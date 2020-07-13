@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Form</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+</head>
+<body>
+    <section class="container my-5">
+        <div class="d-flex flex-row justify-content-between col-md-12 mb-3 bg-info text-white p-2">
+            <span>KYC Form</span>
+            {% if messages %}
+                {% for message in messages %}
+                    <span class="bg-danger"><marquee>{{message}}</marquee></span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">First name</label>
+            <input type="text" class="form-control" name="fname" placeholder="First name" >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Middle name</label>
+            <input type="text" class="form-control" name="mname" placeholder="Middle name" >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Last name</label>
+            <input type="text" class="form-control" name="lname" placeholder="Last name" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-12 mb-3">
+            <label for="validationDefault03">Company Name</label>
+            <input type="text" class="form-control" name="cname" placeholder="Company Name" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">Registered Mobile Number</label>
+            <input type="number" class="form-control" name="number" placeholder="Mobile Number" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">Registered Email ID</label>
+            <input type="email" class="form-control" name="email" placeholder="Email ID" >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">Date of Birth(As Per PAN Card)</label>
+            <input type="date" class="form-control" name="dob" placeholder="Mobile Number" >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">PAN Card Number</label>
+            <input type="text" class="form-control" name="pancardnumber" placeholder="PAN Card Number" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">Pin Code</label>
+            <input type="number" class="form-control" name="pincode" placeholder="Pincode" >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">District</label>
+            <input type="text" class="form-control" name="dist" placeholder="District" >
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">State</label>
+            <input type="text" class="form-control" name="state" placeholder="State" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">City</label>
+            <input type="text" class="form-control" name="city" placeholder="City" >
+          </div>
+          <div class="col-md-8 mb-3">
+            <label for="validationDefault03">Address (As Per Aadhar Back Side)</label>
+            <input type="text" class="form-control" name="address" placeholder="Address" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-12 mb-3 bg-primary text-white p-2">
+              <span>Note - Clear Self Attested Front Scanned Image is </span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">Aadhar Card</label>
+            <input type="file" class="form-control" name="aadharImage" >
+            <img src="{% static 'aadhaar.jpg' %}" alt="Dummy Aadhar Image" class="col-12">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">Pan Card</label>
+            <input type="file" class="form-control" name="pancardImage" >
+            <img src="{% static 'pancard.jpg' %}" alt="Dummy Pan Card Image" class="col-8">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <span class="font-weight-bold">Steps to upload:</span>
+            <ul class="list-group bmd-list-group-sm">
+                <li class="list-group-item">Download E-Adhaar from <a href="https://eaadhaar.uidai.gov.in/">https://eaadhaar.uidai.gov.in/</a></li>
+                <li class="list-group-item">Take a print and seft attest the document</li>
+                <li class="list-group-item">Scan and upload the self attest copy of E-Adhaar here</li>
+            </ul>
+          </div>
+          <div class="col-md-6 mb-3">
+            <span class="font-weight-bold">Steps to upload:</span>
+            <ul class="list-group bmd-list-group-sm">
+                <li class="list-group-item">Only JPG/JPEG/PDF Format are allowed</li>
+                <li class="list-group-item">The Document must be latest and clear</li>
+            </ul>
+          </div>
+        </div>
+
+        <button class="btn btn-outline-primary" type="submit">Update KYC</button>
+      </form>
+    </section>
+</body>
+</html>
